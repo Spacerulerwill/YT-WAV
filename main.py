@@ -1,6 +1,5 @@
 from tkinter.filedialog import askdirectory
 from tkinter.messagebox import showwarning
-from colorama import Fore, init
 import os
 from tkinter import *
 from tkinter import ttk
@@ -280,9 +279,9 @@ class App(Tk):
         try:
             out_file = vid_to_download.download(output_path=location)
         except VideoUnavailable:
-            print(f"{Fore.RED}Video Unavailable!{Fore.WHITE}")
+            print("Video Unavailable!")
         except:
-            print(f'{Fore.RED}An unknown error occurred!{Fore.WHITE}')
+            print('An unknown error occurred!')
         else:
             base, ext = os.path.splitext(out_file)
             new_file = base + ".wav"
@@ -300,7 +299,7 @@ class App(Tk):
                 return False
 
                 
-            print(f'{Fore.GREEN}{song_name} sucessfully downloaded!{Fore.WHITE}')
+            print(f'{song_name} sucessfully downloaded!')
 
         if isLastVideo:
             #reactive button and text box
@@ -322,8 +321,6 @@ if __name__ == "__main__":
     abspath = os.path.abspath(__file__)
     dname = os.path.dirname(abspath)
     os.chdir(dname)
-    #init colorama
-    init()
-
+    
     app = App()
     app.mainloop()
